@@ -9,3 +9,4 @@ C:\Projects\Faculty\FIT-PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\Studen
 C:\Projects\Faculty\FIT-PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.pdb
 C:\Projects\Faculty\FIT-PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.Form1.resources
 C:\Projects\Faculty\FIT-PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.frmLogin.resources
+C:\Projects\Faculty\FIT-PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.mdiMain.resources

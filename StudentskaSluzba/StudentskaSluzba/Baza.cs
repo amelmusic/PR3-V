@@ -8,8 +8,27 @@ namespace StudentskaSluzba
 {
     static class Baza
     {
+
+        public delegate void KorisnikDodan(Korisnik korisnik);
+
+        //public static event KorisnikDodan OnKorisnikDodan;
+        public static event Action<Korisnik> OnKorisnikDodan;
         static public List<Korisnik> Korisnici { get; set; } = new List<Korisnik>();
 
+        //public static void DodajKorisnika(Korisnik korisnik, KorisnikDodan korisnikDodan)
+        //{
+        //    Korisnici.Add(korisnik);
+
+        //    korisnikDodan(korisnik);
+        //}
+
+        public static void DodajKorisnika(Korisnik korisnik)
+        {
+
+            Korisnici.Add(korisnik);
+
+            OnKorisnikDodan(korisnik);
+        }
         static public bool Login(string username, string password)
         {
             foreach(var item in Korisnici)

@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -66,6 +69,12 @@
       <DependentUpon>frmRegistracija.cs</DependentUpon>
     </Compile>
     <Compile Include="Korisnik.cs" />
+    <Compile Include="mdiMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiMain.Designer.cs">
+      <DependentUpon>mdiMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -76,6 +85,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegistracija.resx">
       <DependentUpon>frmRegistracija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiMain.resx">
+      <DependentUpon>mdiMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

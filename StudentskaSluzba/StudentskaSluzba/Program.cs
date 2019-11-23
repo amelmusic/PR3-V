@@ -14,9 +14,15 @@ namespace StudentskaSluzba
         [STAThread]
         static void Main()
         {
+            Baza.OnKorisnikDodan += Baza_OnKorisnikDodan;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new mdiMain());
+        }
+
+        private static void Baza_OnKorisnikDodan(Korisnik korisnik)
+        {
+            MessageBox.Show("Iz program.cs: " + korisnik.Ime);
         }
     }
 }

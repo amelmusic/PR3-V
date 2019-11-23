@@ -15,6 +15,12 @@ namespace StudentskaSluzba
         public frmRegistracija()
         {
             InitializeComponent();
+            Baza.OnKorisnikDodan += Baza_OnKorisnikDodan;
+        }
+
+        private void Baza_OnKorisnikDodan(Korisnik korisnik)
+        {
+            MessageBox.Show($"Event, korisnik dodan: {korisnik?.Ime}");
         }
 
         private void btnSnimi_Click(object sender, EventArgs e)
@@ -29,16 +35,22 @@ namespace StudentskaSluzba
                     korisnik.Username = txtUsername.Text;
                     korisnik.Password = txtPassword.Text;
                     korisnik.Validate();
-                    Baza.Korisnici.Add(korisnik);
+
+                    //Baza.DodajKorisnika(korisnik, (Korisnik kparam) => { MessageBox.Show($"Korisnik dodan anonymous: {korisnik.Ime}"); });
+                    Baza.DodajKorisnika(korisnik);
                     this.Close();
                 }
-            } 
-            //catch(Exception ex)
-            finally
-            {
-                MessageBox.Show("", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        void KorisnikDodan(Korisnik korisnik)
+        {
+            MessageBox.Show($"Korisnik dodan: {korisnik.Ime}");
         }
 
         private void txtUsername_Validating(object sender, CancelEventArgs e)
