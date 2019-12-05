@@ -140,6 +140,8 @@
             this.Controls.Add(this.txtIme);
             this.Name = "frmRegistracija";
             this.Text = "frmRegistracija";
+            this.Load += new System.EventHandler(this.frmRegistracija_Load);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.frmRegistracija_MouseClick);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

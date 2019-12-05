@@ -107,9 +107,25 @@ namespace StudentskaSluzba
         private void registracijaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmRegistracija frm = new frmRegistracija();
+            otvoriFormu(frm);
+        }
+
+        private void otvoriFormu(Form frm)
+        {
             frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
+        }
+
+        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void korisniciToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmKorisniciLista frm = new frmKorisniciLista();
+            otvoriFormu(frm);
         }
     }
 }

@@ -8,7 +8,24 @@ namespace StudentskaSluzba
 {
     static class Baza
     {
+        static Baza()
+        {
+            Korisnici.Add(new Korisnik() 
+            {
+                Ime = "Amel",
+                Prezime = "Musić",
+                Username = "amel",
+                Password = "qweasd"
+            });
 
+            Korisnici.Add(new Korisnik() 
+            {
+                Ime = "Denis",
+                Prezime = "Mušić",
+                Username = "denis",
+                Password = "qweasd"
+            });
+        }
         public delegate void KorisnikDodan(Korisnik korisnik);
 
         //public static event KorisnikDodan OnKorisnikDodan;

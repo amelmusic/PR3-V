@@ -10,3 +10,16 @@ C:\Projects\Faculty\FIT-PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\Studen
 C:\Projects\Faculty\FIT-PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.Form1.resources
 C:\Projects\Faculty\FIT-PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.frmLogin.resources
 C:\Projects\Faculty\FIT-PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.mdiMain.resources
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\bin\Debug\StudentskaSluzba.exe.config
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\bin\Debug\StudentskaSluzba.exe
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\bin\Debug\StudentskaSluzba.pdb
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.csprojAssemblyReference.cache
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.Form1.resources
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.frmLogin.resources
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.frmRegistracija.resources
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.mdiMain.resources
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.Properties.Resources.resources
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.csproj.GenerateResource.cache
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.exe
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.pdb
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.frmKorisniciLista.resources

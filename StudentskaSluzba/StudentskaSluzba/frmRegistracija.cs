@@ -12,11 +12,14 @@ namespace StudentskaSluzba
 {
     public partial class frmRegistracija : Form
     {
-        public frmRegistracija()
+        private Korisnik korisnik = null;
+        public frmRegistracija(Korisnik korisnik = null)
         {
             InitializeComponent();
             Baza.OnKorisnikDodan += Baza_OnKorisnikDodan;
+            this.korisnik = korisnik;
         }
+
 
         private void Baza_OnKorisnikDodan(Korisnik korisnik)
         {
@@ -29,16 +32,28 @@ namespace StudentskaSluzba
             {
                 if (this.ValidateChildren())
                 {
-                    Korisnik korisnik = new Korisnik();
-                    korisnik.Ime = txtIme.Text;
-                    korisnik.Prezime = txtPrezime.Text;
-                    korisnik.Username = txtUsername.Text;
-                    korisnik.Password = txtPassword.Text;
-                    korisnik.Validate();
+                    if (this.korisnik == null)
+                    {
+                        Korisnik korisnik = new Korisnik();
+                        korisnik.Ime = txtIme.Text;
+                        korisnik.Prezime = txtPrezime.Text;
+                        korisnik.Username = txtUsername.Text;
+                        korisnik.Password = txtPassword.Text;
+                        korisnik.Validate();
 
-                    //Baza.DodajKorisnika(korisnik, (Korisnik kparam) => { MessageBox.Show($"Korisnik dodan anonymous: {korisnik.Ime}"); });
-                    Baza.DodajKorisnika(korisnik);
-                    this.Close();
+                        //Baza.DodajKorisnika(korisnik, (Korisnik kparam) => { MessageBox.Show($"Korisnik dodan anonymous: {korisnik.Ime}"); });
+                        Baza.DodajKorisnika(korisnik);
+                        this.Close();
+                    }
+                    else
+                    {
+                        Korisnik korisnik = this.korisnik;
+                        korisnik.Ime = txtIme.Text;
+                        korisnik.Prezime = txtPrezime.Text;
+                        korisnik.Username = txtUsername.Text;
+                        korisnik.Password = txtPassword.Text;
+                        korisnik.Validate();
+                    }
                 }
             }
             catch (Exception ex)
@@ -77,6 +92,27 @@ namespace StudentskaSluzba
             {
                 errorProvider.SetError(txtPassword, "");
             }
+        }
+
+        private void frmRegistracija_Load(object sender, EventArgs e)
+        {
+            if (korisnik != null)
+            {
+                txtIme.Text = korisnik.Ime;
+                txtPrezime.Text = korisnik.Prezime;
+                txtUsername.Text = korisnik.Username;
+                txtPassword.Text = korisnik.Password;
+            }
+        }
+
+        private void frmRegistracija_MouseClick(object sender, MouseEventArgs e)
+        {
+            Korisnik korisnik = this.korisnik;
+            korisnik.Ime = txtIme.Text;
+            korisnik.Prezime = txtPrezime.Text;
+            korisnik.Username = txtUsername.Text;
+            korisnik.Password = txtPassword.Text;
+            korisnik.Validate();
         }
     }
 }
