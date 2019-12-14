@@ -14,6 +14,7 @@ namespace StudentskaSluzba
     {
         public frmKorisniciLista()
         {
+            string str = DateTime.Now.ToBiHString();
             InitializeComponent();
             Baza.OnKorisnikDodan += Baza_OnKorisnikDodan;
             dgvKorisniciList.AutoGenerateColumns = false;
@@ -27,7 +28,9 @@ namespace StudentskaSluzba
         private void ucitajPodatke()
         {
             dgvKorisniciList.DataSource = null;
-            dgvKorisniciList.DataSource = Baza.Korisnici;
+            dgvKorisniciList.DataSource = Baza.KorisniciPretraga(txtIme.Text, txtPrezime.Text, txtSkip.Text, txtLimit.Text);
+            var count = Baza.KorisniciCount(txtIme.Text, txtPrezime.Text);
+            lblUkupno.Text = count.ToString();
         }
 
         private void frmKorisniciLista_Load(object sender, EventArgs e)
