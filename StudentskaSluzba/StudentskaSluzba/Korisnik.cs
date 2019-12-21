@@ -8,10 +8,19 @@ namespace StudentskaSluzba
 {
     public class Korisnik
     {
+        public int Id { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public bool Aktivan { get; set; }
+        public string Naziv => $"{Ime} {Prezime}";
+        public string IB => $"IB{Id}";
+
+        public List<Uloga> Uloge = new List<Uloga>();
+
+        public string UlogeStr => string.Join(",", Uloge.Select(x => x.Naziv));
+        //IB1800545
 
         public void Validate()
         {

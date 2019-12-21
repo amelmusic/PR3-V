@@ -8,10 +8,12 @@ namespace StudentskaSluzba
 {
     static class Baza
     {
+        static int MinId = 2000;
         static Baza()
         {
             Korisnici.Add(new Korisnik() 
             {
+                Id = ++MinId,
                 Ime = "Amel",
                 Prezime = "Musić",
                 Username = "amel",
@@ -21,6 +23,7 @@ namespace StudentskaSluzba
             {
                 Korisnici.Add(new Korisnik()
                 {
+                    Id = ++MinId,
                     Ime = "Denis",
                     Prezime = $"Mušić{i}",
                     Username = $"denis{i}",
@@ -66,7 +69,7 @@ namespace StudentskaSluzba
 
             if (!string.IsNullOrWhiteSpace(ime))
             {
-                query = query.Where(x => x.Ime == ime);
+                query = query.Where(NewMethod(ime));
             }
 
             if (!string.IsNullOrWhiteSpace(prezime))
@@ -75,20 +78,35 @@ namespace StudentskaSluzba
             }
 
             if (!string.IsNullOrWhiteSpace(preskoci)) {
-                int br = int.Parse(preskoci);
-                query = query.Skip(br);
+                //int br = int.Parse(preskoci);
+                int br = 0;
+                bool isValid = int.TryParse(preskoci, out br);
+                if (isValid)
+                {
+                    query = query.Skip(br);
+                }
             }
 
             if (!string.IsNullOrWhiteSpace(uzmi))
             {
-                int br = int.Parse(uzmi);
-                query = query.Take(br);
+                int br = 0;
+                bool isValid = int.TryParse(uzmi, out br);
+                if (isValid)
+                {
+                    query = query.Skip(br);
+                }
             }
 
             query = query.OrderByDescending(x => x.Prezime);
 
             return query.ToList();
         }
+
+        private static System.Linq.Expressions.Expression<Func<Korisnik, bool>> NewMethod(string ime)
+        {
+            return x => x.Ime == ime;
+        }
+
         //public static void DodajKorisnika(Korisnik korisnik, KorisnikDodan korisnikDodan)
         //{
         //    Korisnici.Add(korisnik);
@@ -98,11 +116,18 @@ namespace StudentskaSluzba
 
         public static void DodajKorisnika(Korisnik korisnik)
         {
-
+            var zadnji = Korisnici.Select(x => x.Id).DefaultIfEmpty(0).Max();
+            korisnik.Id = ++zadnji;
             Korisnici.Add(korisnik);
 
             OnKorisnikDodan(korisnik);
         }
+
+        public static Korisnik GetKorisnik(int id)
+        {
+            return Korisnici.Single(x => x.Id == id);
+        }
+
         static public bool Login(string username, string password)
         {
             foreach(var item in Korisnici)

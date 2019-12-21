@@ -39,6 +39,9 @@ namespace StudentskaSluzba
                         korisnik.Prezime = txtPrezime.Text;
                         korisnik.Username = txtUsername.Text;
                         korisnik.Password = txtPassword.Text;
+                        korisnik.Aktivan = chkAktivan.Checked;
+                        korisnik.Uloge = clbUloge.CheckedItems.Cast<Uloga>().ToList();
+
                         korisnik.Validate();
 
                         //Baza.DodajKorisnika(korisnik, (Korisnik kparam) => { MessageBox.Show($"Korisnik dodan anonymous: {korisnik.Ime}"); });
@@ -47,7 +50,7 @@ namespace StudentskaSluzba
                     }
                     else
                     {
-                        Korisnik korisnik = this.korisnik;
+                        Korisnik korisnik = Baza.GetKorisnik(this.korisnik.Id);
                         korisnik.Ime = txtIme.Text;
                         korisnik.Prezime = txtPrezime.Text;
                         korisnik.Username = txtUsername.Text;
@@ -96,23 +99,29 @@ namespace StudentskaSluzba
 
         private void frmRegistracija_Load(object sender, EventArgs e)
         {
+            clbUloge.DataSource = Uloga.Uloge;
+            clbUloge.DisplayMember = "Naziv";
+            
             if (korisnik != null)
             {
+                //txtUsername.Enabled = false;
+                txtUsername.ReadOnly = true;
                 txtIme.Text = korisnik.Ime;
                 txtPrezime.Text = korisnik.Prezime;
                 txtUsername.Text = korisnik.Username;
                 txtPassword.Text = korisnik.Password;
+                chkAktivan.Checked = korisnik.Aktivan;
             }
         }
 
         private void frmRegistracija_MouseClick(object sender, MouseEventArgs e)
         {
-            Korisnik korisnik = this.korisnik;
-            korisnik.Ime = txtIme.Text;
-            korisnik.Prezime = txtPrezime.Text;
-            korisnik.Username = txtUsername.Text;
-            korisnik.Password = txtPassword.Text;
-            korisnik.Validate();
+            //Korisnik korisnik = this.korisnik;
+            //korisnik.Ime = txtIme.Text;
+            //korisnik.Prezime = txtPrezime.Text;
+            //korisnik.Username = txtUsername.Text;
+            //korisnik.Password = txtPassword.Text;
+            //korisnik.Validate();
         }
     }
 }
