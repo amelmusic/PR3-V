@@ -47,59 +47,65 @@ namespace StudentskaSluzba
 
         static public List<Korisnik> KorisniciPretraga(string ime = null, string prezime = null, string preskoci = null, string uzmi = null)
         {
-            var result = from r in Korisnici
-                         where (r.Ime == ime || string.IsNullOrWhiteSpace(ime))
-                            && (r.Prezime == prezime || string.IsNullOrWhiteSpace(prezime))
-                         orderby r.Prezime descending
-                         select r;
-            
-            var tmpList = new List<Korisnik>();
-            foreach(var r in Korisnici)
+            //var result = from r in Korisnici
+            //             where (r.Ime == ime || string.IsNullOrWhiteSpace(ime))
+            //                && (r.Prezime == prezime || string.IsNullOrWhiteSpace(prezime))
+            //             orderby r.Prezime descending
+            //             select r;
+
+            //var tmpList = new List<Korisnik>();
+            //foreach(var r in Korisnici)
+            //{
+            //    if (r.Ime == ime || string.IsNullOrWhiteSpace(ime)
+            //                && (r.Prezime == prezime || string.IsNullOrWhiteSpace(prezime)))
+            //    {
+            //        tmpList.Add(r);
+            //    }
+            //}
+
+
+            //var tmp = result.ToList();
+
+            using (StudentskaSluzbaDbContext ctx = new StudentskaSluzbaDbContext())
             {
-                if (r.Ime == ime || string.IsNullOrWhiteSpace(ime)
-                            && (r.Prezime == prezime || string.IsNullOrWhiteSpace(prezime)))
+                var query = ctx.Korisnici.AsQueryable();
+
+                if (!string.IsNullOrWhiteSpace(ime))
                 {
-                    tmpList.Add(r);
+                    query = query.Where(NewMethod(ime));
                 }
+
+                if (!string.IsNullOrWhiteSpace(prezime))
+                {
+                    query = query.Where(x => x.Prezime == prezime);
+                }
+
+                if (!string.IsNullOrWhiteSpace(preskoci))
+                {
+                    //int br = int.Parse(preskoci);
+                    int br = 0;
+                    bool isValid = int.TryParse(preskoci, out br);
+                    if (isValid)
+                    {
+                        query = query.Skip(br);
+                    }
+                }
+
+                if (!string.IsNullOrWhiteSpace(uzmi))
+                {
+                    int br = 0;
+                    bool isValid = int.TryParse(uzmi, out br);
+                    if (isValid)
+                    {
+                        query = query.Skip(br);
+                    }
+                }
+
+                query = query.OrderByDescending(x => x.Prezime);
+
+                return query.ToList();
             }
            
-
-            var tmp = result.ToList();
-            var query = Korisnici.AsQueryable();
-
-            if (!string.IsNullOrWhiteSpace(ime))
-            {
-                query = query.Where(NewMethod(ime));
-            }
-
-            if (!string.IsNullOrWhiteSpace(prezime))
-            {
-                query = query.Where(x => x.Prezime == prezime);
-            }
-
-            if (!string.IsNullOrWhiteSpace(preskoci)) {
-                //int br = int.Parse(preskoci);
-                int br = 0;
-                bool isValid = int.TryParse(preskoci, out br);
-                if (isValid)
-                {
-                    query = query.Skip(br);
-                }
-            }
-
-            if (!string.IsNullOrWhiteSpace(uzmi))
-            {
-                int br = 0;
-                bool isValid = int.TryParse(uzmi, out br);
-                if (isValid)
-                {
-                    query = query.Skip(br);
-                }
-            }
-
-            query = query.OrderByDescending(x => x.Prezime);
-
-            return query.ToList();
         }
 
         private static System.Linq.Expressions.Expression<Func<Korisnik, bool>> NewMethod(string ime)
@@ -116,11 +122,29 @@ namespace StudentskaSluzba
 
         public static void DodajKorisnika(Korisnik korisnik)
         {
-            var zadnji = Korisnici.Select(x => x.Id).DefaultIfEmpty(0).Max();
-            korisnik.Id = ++zadnji;
-            Korisnici.Add(korisnik);
+            using (StudentskaSluzbaDbContext ctx = new StudentskaSluzbaDbContext())
+            {
+                ctx.Korisnici.Add(korisnik);
+                ctx.SaveChanges();
+            }
+                //var zadnji = Korisnici.Select(x => x.Id).DefaultIfEmpty(0).Max();
+                //korisnik.Id = ++zadnji;
+                //Korisnici.Add(korisnik);
 
-            OnKorisnikDodan(korisnik);
+                //OnKorisnikDodan(korisnik);
+        }
+
+        public static void IzmjeniKorisnika(int id, Korisnik korisnik)
+        {
+            using (StudentskaSluzbaDbContext ctx = new StudentskaSluzbaDbContext())
+            {
+                var novi = ctx.Korisnici.First(x => x.Id == id);
+                novi.Ime = korisnik.Ime;
+                novi.Prezime = korisnik.Prezime;
+                novi.Username = korisnik.Username;
+
+                ctx.SaveChanges();
+            }
         }
 
         public static Korisnik GetKorisnik(int id)

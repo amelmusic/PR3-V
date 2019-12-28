@@ -36,3 +36,13 @@ C:\PR3\PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.Proper
 C:\PR3\PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.csproj.GenerateResource.cache
 C:\PR3\PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.exe
 C:\PR3\PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.pdb
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\bin\Debug\EntityFramework.dll
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\bin\Debug\EntityFramework.SqlServer.dll
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\bin\Debug\System.Data.SQLite.dll
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\bin\Debug\EntityFramework.xml
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\bin\Debug\EntityFramework.SqlServer.xml
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\bin\Debug\System.Data.SQLite.xml
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\bin\Debug\System.Data.SQLite.dll.config
+C:\Projects\Faculty\PR3-V\StudentskaSluzba\StudentskaSluzba\obj\Debug\StudentskaSluzba.csproj.CopyComplete

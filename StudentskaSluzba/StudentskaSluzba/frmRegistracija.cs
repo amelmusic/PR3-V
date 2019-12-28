@@ -50,12 +50,14 @@ namespace StudentskaSluzba
                     }
                     else
                     {
-                        Korisnik korisnik = Baza.GetKorisnik(this.korisnik.Id);
+                        Korisnik korisnik = this.korisnik;
                         korisnik.Ime = txtIme.Text;
                         korisnik.Prezime = txtPrezime.Text;
                         korisnik.Username = txtUsername.Text;
                         korisnik.Password = txtPassword.Text;
                         korisnik.Validate();
+
+                        Baza.IzmjeniKorisnika(this.korisnik.Id, korisnik);
                     }
                 }
             }
