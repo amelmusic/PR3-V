@@ -94,6 +94,7 @@
     <Compile Include="frmRegistracija.Designer.cs">
       <DependentUpon>frmRegistracija.cs</DependentUpon>
     </Compile>
+    <Compile Include="Grad.cs" />
     <Compile Include="Korisnik.cs" />
     <Compile Include="mdiMain.cs">
       <SubType>Form</SubType>

@@ -18,6 +18,7 @@ namespace StudentskaSluzba
         public bool Aktivan { get; set; }
         public string Naziv => $"{Ime} {Prezime}";
         public string IB => $"IB{Id}";
+        public Grad Grad { get; set; }
 
         public List<Uloga> Uloge = new List<Uloga>();
 

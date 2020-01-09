@@ -15,5 +15,6 @@ namespace StudentskaSluzba
 
         }
         public DbSet<Korisnik> Korisnici { get; set; }
+        public DbSet<Grad> Gradovi { get; set; }
     }
 }
