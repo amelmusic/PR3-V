@@ -68,7 +68,7 @@ namespace StudentskaSluzba
 
             using (StudentskaSluzbaDbContext ctx = new StudentskaSluzbaDbContext())
             {
-                var query = ctx.Korisnici.AsQueryable();
+                var query = ctx.Korisnici.Include("Uloge").Include("Grad").AsQueryable();
 
                 if (!string.IsNullOrWhiteSpace(ime))
                 {
@@ -124,7 +124,12 @@ namespace StudentskaSluzba
         {
             using (StudentskaSluzbaDbContext ctx = new StudentskaSluzbaDbContext())
             {
+                ctx.Gradovi.Attach(korisnik.Grad);
+                ctx.Spolovi.Attach(korisnik.Spol);
+
                 ctx.Korisnici.Add(korisnik);
+                
+                
                 ctx.SaveChanges();
             }
                 //var zadnji = Korisnici.Select(x => x.Id).DefaultIfEmpty(0).Max();
@@ -150,6 +155,30 @@ namespace StudentskaSluzba
         public static Korisnik GetKorisnik(int id)
         {
             return Korisnici.Single(x => x.Id == id);
+        }
+
+        public static List<Grad> Gradovi()
+        {
+            using (StudentskaSluzbaDbContext ctx = new StudentskaSluzbaDbContext())
+            {
+                return ctx.Gradovi.ToList();
+            }
+        }
+
+        public static List<Spolovi> Spolovi()
+        {
+            using (StudentskaSluzbaDbContext ctx = new StudentskaSluzbaDbContext())
+            {
+                return ctx.Spolovi.ToList();
+            }
+        }
+
+        public static List<Uloga> Uloge()
+        {
+            using (StudentskaSluzbaDbContext ctx = new StudentskaSluzbaDbContext())
+            {
+                return ctx.Uloge.ToList();
+            }
         }
 
         static public bool Login(string username, string password)

@@ -41,6 +41,8 @@ namespace StudentskaSluzba
                         korisnik.Password = txtPassword.Text;
                         korisnik.Aktivan = chkAktivan.Checked;
                         korisnik.Uloge = clbUloge.CheckedItems.Cast<Uloga>().ToList();
+                        korisnik.Grad = cmbGrad.SelectedItem as Grad;
+                        korisnik.Spol = cmbSpol.SelectedItem as Spolovi;
 
                         korisnik.Validate();
 
@@ -55,6 +57,8 @@ namespace StudentskaSluzba
                         korisnik.Prezime = txtPrezime.Text;
                         korisnik.Username = txtUsername.Text;
                         korisnik.Password = txtPassword.Text;
+                        korisnik.Grad = cmbGrad.SelectedItem as Grad;
+                        korisnik.Spol = cmbSpol.SelectedItem as Spolovi;
                         korisnik.Validate();
 
                         Baza.IzmjeniKorisnika(this.korisnik.Id, korisnik);
@@ -101,9 +105,16 @@ namespace StudentskaSluzba
 
         private void frmRegistracija_Load(object sender, EventArgs e)
         {
-            clbUloge.DataSource = Uloga.Uloge;
+            clbUloge.DataSource = Baza.Uloge();
             clbUloge.DisplayMember = "Naziv";
-            
+
+            cmbGrad.DataSource = Baza.Gradovi();
+            cmbGrad.DisplayMember = "Naziv";
+
+            cmbSpol.DataSource = Baza.Spolovi();
+            cmbSpol.DisplayMember = "Naziv";
+
+
             if (korisnik != null)
             {
                 //txtUsername.Enabled = false;

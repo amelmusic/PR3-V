@@ -19,8 +19,12 @@ namespace StudentskaSluzba
         public string Naziv => $"{Ime} {Prezime}";
         public string IB => $"IB{Id}";
         public Grad Grad { get; set; }
+        public Grad GradRodjenja { get; set; }
+        public Grad GradPrebivalista { get; set; }
 
-        public List<Uloga> Uloge = new List<Uloga>();
+
+        public Spolovi Spol { get; set; }
+        public virtual ICollection<Uloga> Uloge { get; set; } = new List<Uloga>();
 
         public string UlogeStr => string.Join(",", Uloge.Select(x => x.Naziv));
         //IB1800545

@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 
 namespace StudentskaSluzba
 {
-    [Table("Uloge")]
-    public class Uloga
+    [Table("Spolovi")]
+    public class Spolovi
     {
         public int Id { get; set; }
         public string Naziv { get; set; }
-        public virtual ICollection<Korisnik> Korisnici { get; set; } = new List<Korisnik>();
     }
 }
